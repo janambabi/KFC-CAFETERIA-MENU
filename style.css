@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+body {
+    background: url('bg.png') no-repeat center center fixed;
+    background-size: cover;
+    color: #1e293b;
+    font-family: 'Poppins', sans-serif;
+    overflow-y: auto; /* Allow scrolling if content overflows */
+}
+
+/* PIN MODAL */
+.pin-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+    animation: fadeIn 0.3s ease-out;
+}
+
+.pin-box {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transform: scale(0.9);
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.pin-box h2 {
+    margin-bottom: 20px;
+    color: #334155;
+}
+
+.pin-box input {
+    padding: 15px;
+    font-size: 1.5rem;
+    width: 200px;
+    text-align: center;
+    border-radius: 12px;
+    border: 2px solid #cbd5e1;
+    margin: 20px 0;
+    color: #334155;
+    background: #f8fafc;
+    transition: all 0.3s ease;
+    letter-spacing: 5px;
+}
+
+.pin-box input:focus {
+    outline: none;
+    border-color: #ef4444;
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+}
+
+.pin-box button {
+    padding: 12px 30px;
+    background: #ef4444;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+    width: 100%;
+}
+
+.pin-box button:hover {
+    background: #dc2626;
+    transform: translateY(-2px);
+}
+
+.pin-box button:active {
+    transform: translateY(0);
+}
+
+#pinError {
+    color: #ef4444;
+    margin-top: 15px;
+    font-weight: 600;
+    min-height: 24px;
+}
+
+/* MENU */
+.menu-screen {
+    min-height: 100vh;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+}
+
+h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #b91c1c;
+    text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.5);
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+
+.date {
+    color: #475569;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    background: white;
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 50px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.menu-card {
+    background: white;
+    border-radius: 24px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    color: #334155;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #f1f5f9;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: slideUpFade 0.6s ease-out backwards;
+}
+
+.menu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.menu-card div:first-child {
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    color: #1e293b;
+}
+
+.price {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #dc2626;
+    background: #fef2f2;
+    padding: 5px 15px;
+    border-radius: 12px;
+    display: inline-block;
+}
+
+/* SCROLL */
+#menuWrapper {
+    height: 55vh; /* Reduced height to make space for admin panel */
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
+}
+
+.menu-scroll-wrapper {
+    display: flex;
+    flex-direction: column;
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* ADMIN */
+.admin-only {
+    display: none;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    padding-bottom: 100px; /* Increased padding to ensure buttons are fully visible */
+    margin-top: 20px;
+}
+
+.admin-only input {
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    border: 2px solid #e2e8f0;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.admin-only input:focus {
+    border-color: #3b82f6;
+}
+
+.admin-only button {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: #3b82f6;
+    color: white;
+}
+
+.admin-only button:hover {
+    filter: brightness(110%);
+    transform: translateY(-1px);
+}
+
+.logout {
+    background: #ef4444 !important;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes popIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Staggered animation delays for cards */
+.menu-card:nth-child(1) { animation-delay: 0.1s; }
+.menu-card:nth-child(2) { animation-delay: 0.2s; }
+.menu-card:nth-child(3) { animation-delay: 0.3s; }
+.menu-card:nth-child(4) { animation-delay: 0.4s; }
+.menu-card:nth-child(5) { animation-delay: 0.5s; }
+.menu-card:nth-child(6) { animation-delay: 0.6s; }
+.menu-card:nth-child(7) { animation-delay: 0.7s; }
+.menu-card:nth-child(8) { animation-delay: 0.8s; }
